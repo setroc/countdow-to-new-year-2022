@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Countdown</title>
+</head>
+<body>
+  <main>
+
+    <div class="cart">
+      <div class="date">
+        <p id="days">00</p>
+      </div>
+      <p class="title">Días</p>
+    </div>
+    <div class="cart">
+      <div class="date">
+        <p id="hours">00</p>
+      </div>
+      <p class="title">Horas</p>
+    </div>
+    <div class="cart">
+      <div class="date">
+        <p id="minuts">00</p>
+      </div>
+      <p class="title">Minutos</p>
+    </div>
+    <div class="cart">
+      <div class="date">
+        <p id="seconds">00</p>
+      </div>
+      <p class="title">Segundos</p>
+    </div>
+
+    <script>
+      const countdown = () => {
+        const missingSeconds = ( new Date(2022,00,01) - new Date() ) / 1000;
+        
+        const d = Math.floor(missingSeconds / 86400);
+        const h = Math.floor(missingSeconds / 3600) % 24;
+        const m = Math.floor(missingSeconds / 60) % 60;
+        const s = Math.floor(missingSeconds) % 60;
+        
+        document.querySelector("#days").textContent = d<10 ? `0${d}`: d;
+        document.querySelector("#hours").textContent = h<10 ? `0${h}`: h;
+        document.querySelector("#minuts").textContent = m<10 ? `0${m}`: m;
+        document.querySelector("#seconds").textContent = s<10 ? `0${s}`: s;
+      }
+      countdown();
+      setInterval(() => {
+        countdown();
+      }, 1000);
+    </script>
+  </main>
+</body>
+</html>
